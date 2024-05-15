@@ -17,8 +17,14 @@ async function deleteItem(userCart, name){
 }
 
 // remover um item do carrinho (subtrair uma unidade)
-async function removeItem(userCart, name){
-    
+async function removeItem(userCart, index){
+    // transforma o indice visual para o indice do back
+    const deleteIndex = index - 1
+
+    //verifica se é maior que zer e se é menor que o tamanho do carrinho
+    if(index >= 0 && index < userCart.length){
+        userCart.splice(deleteIndex, 1)
+    }
 }
 
 // somar valores totais do carrinho

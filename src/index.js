@@ -17,10 +17,15 @@ const item2 = await createItem("hotwheels lamborghini ", 39.99, 3)
 //adicionei 1 item no carrinho e 1 na lista de desejos
 await cartService.addItem (myCart, item1)
 await cartService.addItem (myWhishList, item2)
+
+
+await cartService.removeItem(myCart, 1)
 await cartService.displayCart(myCart)
+
+
 
 //deletei no carrinho 1 item .
 //await cartService.deleteItem(myCart, item1.name)
-
+console.log("\n")
 console.log('shopee cart Total is: ')
 await cartService.calculateTotal(myCart)

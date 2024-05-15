@@ -17,13 +17,38 @@ async function deleteItem(userCart, name){
 }
 
 // remover um item do carrinho (subtrair uma unidade)
-async function removeItem(userCart, index){
+async function removeUnite(userCart, index){
     // transforma o indice visual para o indice do back
     const deleteIndex = index - 1
 
     //verifica se é maior que zer e se é menor que o tamanho do carrinho
     if(index >= 0 && index < userCart.length){
         userCart.splice(deleteIndex, 1)
+    }
+}
+
+// remover um item
+async function removeItem(userCart, item){
+    const indexFound = userCart.findIndex((p) => p.name === item.name)
+    console.log('item encontrado')
+    console.log(indexFound)
+
+    //caso não encontre
+
+    if(indexFound == 0){
+        console.log('item não encontrado')
+        return
+    }
+
+    //item > 1 subtrair um item, item  = deletar o item
+    if(userCart[indexFound].quantity > 1 ){
+        userCart[indexFound].quantity -= 1
+    }
+
+    // caso item = 1 deletar o item
+    if(userCart[indexFound].quantity ===1){
+        userCart.splice(indexFound, 1)
+        return
     }
 }
 
@@ -48,5 +73,6 @@ export {
     calculateTotal, 
     deleteItem,
     removeItem, 
-    displayCart
+    displayCart,
+    removeUnite,
 }
